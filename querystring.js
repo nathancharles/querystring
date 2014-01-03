@@ -13,7 +13,11 @@
 
 	var querystring = function querystring(name) {
 		if(arguments.length > 0) {
-			return (_queryString.hasOwnProperty(name)) ? _queryString[name] : null;
+			if(typeof name === 'string') {
+				return (_queryString.hasOwnProperty(name)) ? _queryString[name] : null;
+			}else{
+				throw "The parameter name must be a string";
+			}
 		}
 		return _queryString;
 	};
