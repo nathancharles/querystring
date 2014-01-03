@@ -11,8 +11,11 @@
 		}
 	}());
 
-	var querystring = function querystring() {
-
+	var querystring = function querystring(name) {
+		if(arguments.length > 0) {
+			return (_queryString.hasOwnProperty(name)) ? _queryString[name] : null;
+		}
+		return _queryString;
 	};
 
 	window.querystring = querystring;
