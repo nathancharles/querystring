@@ -2,7 +2,7 @@
 	var _queryString = {};
 
 	(function(currentUrl){
-		var query = currentUrl.split('?')[1],
+		var query = currentUrl.split('?')[1] || '',
 			queryArray = query.split('&'),
 			paramParts;
 
