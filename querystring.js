@@ -2,6 +2,8 @@
 	var _queryString = {};
 
 	(function(currentUrl){
+		// TODO: fix the parsing if no query parameters exist
+		// regex search?
 		var query = currentUrl.split('?')[1] || '',
 			queryArray = query.split('&'),
 			paramParts;
