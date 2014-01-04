@@ -1,8 +1,20 @@
+/*
+Parameter formats
+key=value
+key=with spaces
+key=with%20spaces
+key=with+spaces
+key=
+key
+ */
+
 (function(window) {
 	var _queryString = {};
 
 	/**
 	 * IFFE function to parse query string and store values in _queryString
+	 * @see http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+	 * 		nice search regex: /([^&=]+)=?([^&]*)/g
 	 * @param  {String} currentUrl
 	 */
 	(function(currentUrl){
