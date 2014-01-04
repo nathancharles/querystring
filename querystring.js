@@ -26,7 +26,7 @@ key
 
 		for(var i = 0; i < queryArray.length; i++) {
 			paramParts = queryArray[i].split('=');
-			_queryString[paramParts[0]] = (paramParts[1]) ? paramParts[1] : '';
+			_queryString[paramParts[0]] = decodeURIComponent((paramParts[1]) ? paramParts[1] : '');
 		}
 	}(window.location.href));
 
