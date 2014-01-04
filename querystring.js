@@ -21,13 +21,12 @@ key
 		// TODO: fix the parsing if no query parameters exist
 		// regex search?
 		var query = currentUrl.split('?')[1] || '',
-			search = /([^&=]+)=?([^&]*)/g,
-			queryArray = query.split('&'),
+			search = /([^&=]+)=?([^&]*)/,
 			paramParts;
 
 		for(var i = 0; i < queryArray.length; i++) {
-			paramParts = queryArray[i].split('=');
-			_queryString[paramParts[0]] = decodeURIComponent((paramParts[1]) ? paramParts[1] : '').replace(/\+/g, ' ');
+			paramParts = search.exec(queryArray[i]);
+			_queryString[paramParts[1]] = decodeURIComponent((paramParts[2]) ? paramParts[2] : '').replace(/\+/g, ' ');
 		}
 	}(window.location.href));
 
