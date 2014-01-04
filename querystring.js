@@ -3,8 +3,9 @@
 
 	/**
 	 * IFFE function to parse query string and store values in _queryString
+	 * pulled search regex from the page below: /([^&=]+)=?([^&]*)/g
 	 * @see http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-	 * 		nice search regex: /([^&=]+)=?([^&]*)/g
+	 *
 	 * @param  {String} currentUrl
 	 */
 	(function(currentUrl){
@@ -13,7 +14,7 @@
 			paramParts;
 
 		for(paramParts = search.exec(query); paramParts; paramParts = search.exec(query)) {
-			_queryString[paramParts[1]] = decodeURIComponent((paramParts[2]) ? paramParts[2] : '').replace(/\+/g, ' ');
+			_queryString[paramParts[1]] = decodeURIComponent(paramParts[2].replace(/\+/g, ' '));
 		}
 	}(window.location.href));
 
