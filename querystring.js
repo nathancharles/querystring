@@ -1,13 +1,3 @@
-/*
-Parameter formats
-key=value
-key=with spaces
-key=with%20spaces
-key=with+spaces
-key=
-key
- */
-
 (function(window) {
 	var _queryString = {};
 
@@ -18,10 +8,8 @@ key
 	 * @param  {String} currentUrl
 	 */
 	(function(currentUrl){
-		// TODO: fix the parsing if no query parameters exist
 		var query = currentUrl.split('?')[1] || '',
 			search = /([^&=]+)=?([^&]*)/g,
-			queryArray = query.split('&'),
 			paramParts;
 
 		for(paramParts = search.exec(query); paramParts; paramParts = search.exec(query)) {
