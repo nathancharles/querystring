@@ -19,13 +19,12 @@ key
 	 */
 	(function(currentUrl){
 		// TODO: fix the parsing if no query parameters exist
-		// regex search?
 		var query = currentUrl.split('?')[1] || '',
-			search = /([^&=]+)=?([^&]*)/,
+			search = /([^&=]+)=?([^&]*)/g,
+			queryArray = query.split('&'),
 			paramParts;
 
-		for(var i = 0; i < queryArray.length; i++) {
-			paramParts = search.exec(queryArray[i]);
+		for(paramParts = search.exec(query); paramParts; paramParts = search.exec(query)) {
 			_queryString[paramParts[1]] = decodeURIComponent((paramParts[2]) ? paramParts[2] : '').replace(/\+/g, ' ');
 		}
 	}(window.location.href));
